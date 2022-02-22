@@ -110,5 +110,20 @@ namespace Day14_Partice_Problem
             }
             return false;
         }
+        public int Index(T data)
+        {
+            int index = 0;
+            Node<T> temp = head;
+            while (temp != null)
+            {
+                if (temp.data.CompareTo(data) == 0)
+                    return index;
+                temp = temp.next;
+                index++;
+            }
+            return -1;
+        }
     }
+
+
 }
