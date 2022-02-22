@@ -56,5 +56,24 @@ namespace Day14_Partice_Problem
             }
         }
 
+        public void Insert(int pos, T data)
+        {
+            Node<T> temp = head;
+            if (pos < 0)
+            {
+                Console.WriteLine("Invalid position");
+                return;
+            }
+            if (pos == 0)
+                Add(data);
+            else
+            {
+                Node<T> node = new Node<T>(data);
+                for (int i = 1; i < pos; i++)
+                    temp = temp.next;
+                node.next = temp.next;
+                temp.next = node;
+            }
+        }
     }
 }
