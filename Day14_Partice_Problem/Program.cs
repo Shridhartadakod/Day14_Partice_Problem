@@ -16,6 +16,15 @@ namespace Day14_Partice_Problem
             stack.Push(30);
             stack.Push(56);
             stack.Display();
+
+            while(stack.IsEmpty() is false)
+            {
+                Console.WriteLine("top element: " +stack.Peek());
+                Console.WriteLine("Popping");
+                stack.Pop();
+                Console.WriteLine("List:");
+                stack.Display();
+            }
         }
     }
 }

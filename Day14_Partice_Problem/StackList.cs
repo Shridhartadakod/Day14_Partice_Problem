@@ -17,5 +17,15 @@ namespace Day14_Partice_Problem
         {
             Add (data);
         }
+
+        public T Peek()
+        {
+            return head.data;
+        }
+
+        public new void Pop()
+        {
+            base.Pop();
+        }
     }
 }
