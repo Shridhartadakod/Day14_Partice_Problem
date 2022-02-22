@@ -10,23 +10,19 @@ namespace Day14_Partice_Problem
     {
         static void Main(string[] args)
         {
-            UnOrderedLinkedList<int> list=new UnOrderedLinkedList<int>();
-            Console.WriteLine("Appending 56, 30, 70 to list");
-            list.Append(56);
-            list.Append(70);
-            list.Insert(1, 30);
-            list.Display();
+            OrderedLinkedList<int> orderedList=new OrderedLinkedList<int>();
+            Console.WriteLine("Adding 56, 30, 40, 70 to ordered list");
+            orderedList.Add(56);
+            orderedList.Add(30);
+            orderedList.Add(40);
+            orderedList.Add(70);
 
-            Console.WriteLine("Insert 40 after 30");
-            int pos = list.Index(30);
-            list.Insert(pos + 1, 40);
-            list.Display();
+            Console.WriteLine("Sorted List: ");
+            orderedList.Display();
 
-            Console.WriteLine("Remove 40");
-            list.Remove(40);
-            list.Display();
-
-            Console.WriteLine("Size of list: " + list.Size());
+            Console.WriteLine("Remove 70");
+            orderedList.Remove(70);
+            orderedList.Display();
         }
     }
 }

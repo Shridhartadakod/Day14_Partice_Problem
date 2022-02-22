@@ -6,166 +6,46 @@ using System.Threading.Tasks;
 
 namespace Day14_Partice_Problem
 {
-    internal class UnOrderedLinkedList<T> where T : IComparable<T>
+    internal class UnOrderedLinkedList<T> : LinkedList<T> where T : IComparable
     {
-        public Node<T> head;
-        public UnOrderedLinkedList()
+        public static UnOrderedLinkedList<T> List()
         {
-            head = null;
-        }
-        public UnOrderedLinkedList<T> List()
-        {
-            UnOrderedLinkedList<T> emptyList = new UnOrderedLinkedList<T>();
-            return emptyList;
+            return new UnOrderedLinkedList<T>();
         }
 
-        public bool IsEmpty()
+        public new void Append(T data)
         {
-            if (head == null)
-                return true;
-            return false;
-        }
-        public void Append(T data)
-        {
-            Node<T> node = new Node<T>(data);
-            if (head == null)
-            {
-                head = node;
-            }
-            else
-            {
-                Node<T> temp = head;
-                while (temp.next != null)
-                    temp = temp.next;
-                temp.next = node;
-            }
-
-        }
-        public void Display()
-        {
-            Node<T> temp = head;
-            while (temp != null)
-            {
-                Console.WriteLine(" " + temp.data);
-                temp = temp.next;
-            }
+            base.Append(data);
         }
 
-        public void Add(T data)
+      
+        public new void Display()
         {
-            Node<T> node = new Node<T>(data);
-            if (head == null)
-                head = node;
-            else
-            {
-                node.next = head;
-                head = node;
-            }
+            base.Display();
         }
 
-        public void Insert(int pos, T data)
+      
+        public new void Add(T data)
         {
-            Node<T> temp = head;
-            if (pos < 0)
-            {
-                Console.WriteLine("Invalid position");
-                return;
-            }
-            if (pos == 0)
-                Add(data);
-            else
-            {
-                Node<T> node = new Node<T>(data);
-                for (int i = 1; i < pos; i++)
-                    temp = temp.next;
-                node.next = temp.next;
-                temp.next = node;
-            }
+            base.Add(data);
         }
 
-        public void Pop()
+        
+        public new void Insert(int pos, T data)
         {
-            if (head == null)
-                return;
-            else
-                head = head.next;
+            base.Insert(pos, data);
         }
 
-
-        public void PopLast()
+       
+        public new void Pop()
         {
-            if (head == null)
-                return;
-            else
-            {
-                Node<T> temp = head;
-                while (temp.next.next != null)
-                    temp = temp.next;
-                temp.next = null;
-            }
+            base.Pop();
         }
 
-
-        public bool Search(T data)
+       
+        public new void PopLast()
         {
-            Node<T> temp = head;
-            while (temp != null)
-            {
-                if (temp.data.CompareTo(data) == 0)
-                    return true;
-                temp = temp.next;
-            }
-            return false;
+            base.PopLast();
         }
-        public int Index(T data)
-        {
-            int index = 0;
-            Node<T> temp = head;
-            while (temp != null)
-            {
-                if (temp.data.CompareTo(data) == 0)
-                    return index;
-                temp = temp.next;
-                index++;
-            }
-            return -1;
-        }
-
-
-        public void Remove(T data)
-        {
-            if (IsEmpty())
-                return;
-            if (head.data.CompareTo(data) == 0)
-                head = head.next;
-            else
-            {
-                Node<T> temp = head;
-                while (temp != null)
-                {
-                    if (temp.next.data.CompareTo(data) == 0)
-                    {
-                        temp.next = temp.next.next;
-                        return;
-                    }
-                    temp = temp.next;
-                }
-            }
-        }
-
-        public int Size()
-        {
-            int size = 0;
-            Node<T> temp = head;
-            while (temp != null)
-            {
-                size++;
-                temp = temp.next;
-            }
-            return size;
-        }
-
-
     }
-
-    }
+}
