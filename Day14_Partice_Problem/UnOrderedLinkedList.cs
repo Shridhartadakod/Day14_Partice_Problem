@@ -75,5 +75,13 @@ namespace Day14_Partice_Problem
                 temp.next = node;
             }
         }
+
+        public void Pop()
+        {
+            if (head == null)
+                return;
+            else
+                head=head.next;
+        }
     }
 }
