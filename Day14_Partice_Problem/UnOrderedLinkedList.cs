@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Day14_Partice_Problem
 {
-    internal class UnOrderedLinkedList<T> where T:IComparable<T>
+    internal class UnOrderedLinkedList<T> where T : IComparable<T>
     {
         public Node<T> head;
         public UnOrderedLinkedList()
@@ -15,24 +15,31 @@ namespace Day14_Partice_Problem
         }
         public UnOrderedLinkedList<T> List()
         {
-            UnOrderedLinkedList<T> emptyList=new UnOrderedLinkedList<T>();
+            UnOrderedLinkedList<T> emptyList = new UnOrderedLinkedList<T>();
             return emptyList;
+        }
+
+        public bool IsEmpty()
+        {
+            if (head == null)
+                return true;
+            return false;
         }
         public void Append(T data)
         {
-            Node<T> node =new Node<T>(data);
-            if(head == null)
+            Node<T> node = new Node<T>(data);
+            if (head == null)
             {
-                head = node;    
+                head = node;
             }
             else
             {
                 Node<T> temp = head;
-                while(temp.next!= null)
-                    temp=temp.next;
-                temp.next=node;
+                while (temp.next != null)
+                    temp = temp.next;
+                temp.next = node;
             }
-            
+
         }
         public void Display()
         {
@@ -46,12 +53,12 @@ namespace Day14_Partice_Problem
 
         public void Add(T data)
         {
-            Node<T> node=new Node<T>(data);
-            if(head == null)
+            Node<T> node = new Node<T>(data);
+            if (head == null)
                 head = node;
             else
             {
-                node.next=head;
+                node.next = head;
                 head = node;
             }
         }
@@ -81,7 +88,7 @@ namespace Day14_Partice_Problem
             if (head == null)
                 return;
             else
-                head=head.next;
+                head = head.next;
         }
 
 
@@ -123,7 +130,42 @@ namespace Day14_Partice_Problem
             }
             return -1;
         }
+
+
+        public void Remove(T data)
+        {
+            if (IsEmpty())
+                return;
+            if (head.data.CompareTo(data) == 0)
+                head = head.next;
+            else
+            {
+                Node<T> temp = head;
+                while (temp != null)
+                {
+                    if (temp.next.data.CompareTo(data) == 0)
+                    {
+                        temp.next = temp.next.next;
+                        return;
+                    }
+                    temp = temp.next;
+                }
+            }
+        }
+
+        public int Size()
+        {
+            int size = 0;
+            Node<T> temp = head;
+            while (temp != null)
+            {
+                size++;
+                temp = temp.next;
+            }
+            return size;
+        }
+
+
     }
 
-
-}
+    }
