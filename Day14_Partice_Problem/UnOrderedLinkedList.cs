@@ -83,5 +83,19 @@ namespace Day14_Partice_Problem
             else
                 head=head.next;
         }
+
+
+        public void PopLast()
+        {
+            if (head == null)
+                return;
+            else
+            {
+                Node<T> temp = head;
+                while (temp.next.next != null)
+                    temp = temp.next;
+                temp.next = null;
+            }
+        }
     }
 }
