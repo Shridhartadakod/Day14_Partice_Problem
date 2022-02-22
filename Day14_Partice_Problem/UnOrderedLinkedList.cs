@@ -44,5 +44,17 @@ namespace Day14_Partice_Problem
             }
         }
 
+        public void Add(T data)
+        {
+            Node<T> node=new Node<T>(data);
+            if(head == null)
+                head = node;
+            else
+            {
+                node.next=head;
+                head = node;
+            }
+        }
+
     }
 }
